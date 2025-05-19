@@ -1,28 +1,29 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function UserForm() {
- const [formData, setFormData] = useState({
-  name: "",
-  email: "",
-  feedback: ""
- });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    feedback: "",
+  });
 
- const handleChange = (e) => {
-  const { name, value } = e.target;
-  console.log(`Updating ${name}:`, value);
-  setFormData((prevData) => ({
-    ...prevData,
-    [name]: value,
-  }));
- };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(`Updating ${name}:`, value);
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
- const submitAlert = () => {alert("Your form has been submitted")}
+  const submitAlert = () => {
+    alert("Your form has been submitted");
+  };
 
- return (
-  <div style={{ textAlign: "center", marginTop: "20px" }}>
-    <h1>User Form</h1>
-    <form >
-      <fieldset>
+  return (
+    <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <h1>User Form</h1>
+      <form>
         <label>
           Name:
           <input
@@ -32,7 +33,9 @@ function UserForm() {
             onChange={handleChange}
           />
         </label>
+
         <br />
+
         <label>
           Email:
           <input
@@ -42,7 +45,9 @@ function UserForm() {
             onChange={handleChange}
           />
         </label>
+
         <br />
+
         <label>
           Feedback:
           <br />
@@ -56,21 +61,29 @@ function UserForm() {
             className="input"
           />
         </label>
-      </fieldset>
-      <button
+
+        <button
           onClick={submitAlert}
-          className={formData.feedback.length === 0
-              ? "disabled-button" : "enabled-button"}
-          disabled={formData.feedback.length === 0}>Submit
-      </button>
-    </form>
-    <h2>Preview</h2>
-    <p>Name: {formData.name}</p>
-    <p>Email: {formData.email}</p>
-    <p>Feedback: {formData.feedback}</p>
-    <p>Feedback Character Count: {formData.feedback.length}</p>
-  </div>
- );
+          className={
+            formData.feedback.length === 0
+              ? "disabled-button"
+              : "enabled-button"
+          }
+          disabled={formData.feedback.length === 0}
+        >
+          Submit
+        </button>
+      </form>
+
+      <section>
+        <h2>Preview</h2>
+        <p>Name: {formData.name}</p>
+        <p>Email: {formData.email}</p>
+        <p>Feedback: {formData.feedback}</p>
+        <p>Feedback Character Count: {formData.feedback.length}</p>
+      </section>
+    </div>
+  );
 }
 
 export default UserForm;
