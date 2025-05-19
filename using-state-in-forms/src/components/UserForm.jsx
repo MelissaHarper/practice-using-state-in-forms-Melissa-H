@@ -16,42 +16,53 @@ function UserForm() {
   }));
  };
 
+ const submitAlert = () => {alert("Your form has been submitted")}
+
  return (
   <div style={{ textAlign: "center", marginTop: "20px" }}>
     <h1>User Form</h1>
     <form >
-      <label>
-        Name:
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Email:
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Feedback:
+      <fieldset>
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </label>
         <br />
-        <textarea
-          type="textarea"
-          name="feedback"
-          rows="5"
-          cols="30"
-          value={formData.feedback}
-          onChange={handleChange}
-        />
-      </label>
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label>
+          Feedback:
+          <br />
+          <textarea
+            type="textarea"
+            name="feedback"
+            rows="5"
+            cols="30"
+            value={formData.feedback}
+            onChange={handleChange}
+            className="input"
+          />
+        </label>
+      </fieldset>
+      <button
+          onClick={submitAlert}
+          className={formData.feedback.length === 0
+              ? "disabled-button" : "enabled-button"}
+          disabled={formData.feedback.length === 0}>Submit
+      </button>
     </form>
     <h2>Preview</h2>
     <p>Name: {formData.name}</p>
